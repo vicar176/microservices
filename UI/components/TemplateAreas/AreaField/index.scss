@@ -1,0 +1,89 @@
+.AreaField {
+
+}
+
+.fieldWrapper {
+  cursor: pointer;
+  overflow: hidden;
+  //padding: 0 10px;
+
+  a {
+    & > div {
+      display: inline;
+    }
+  }
+}
+
+.areaFieldTitle {
+}
+
+.fieldRequired {
+  color: red;
+  font-weight: bold;
+}
+
+.row {
+}
+
+.fieldContent {
+  padding: 15px;
+  display: none;
+
+  input,
+  textarea {
+    color: #58595b;
+  }
+
+  textarea {
+    margin: 10px 0;
+    width: 100%;
+  }
+}
+
+.fieldVisible {
+  display: block;
+}
+
+.fieldSelected {
+}
+
+.fieldZone {
+  padding: .3em;
+  // display: inline-block;
+  // margin: 0 .2em;
+  // font-size: 14px;
+
+  input {
+    padding: 6px 8px;
+  }
+}
+
+.fieldCoord {
+  min-width: 3em;
+  font-weight: bold;
+}
+
+.fieldValue {
+  //font-size: 14px;
+  //width: 4em;
+}
+
+.mapped {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.areaId {
+  margin-right: .2em;
+  background-color: #6363f5;
+  border-radius: 50%;
+  color: #FFF;
+  display: inline-block;
+  font-weight: bold;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  vertical-align: middle;
+  width: 25px;
+}

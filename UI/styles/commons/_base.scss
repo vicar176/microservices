@@ -1,0 +1,33 @@
+:global {
+
+// Global styles
+// html {
+//   overflow-y:scroll;
+// }
+
+a, img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+// General styles
+.text-warning {
+  color: $red
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+.text-more {
+  text-transform: lowercase;
+  font-size: .9em;
+}
+
+// Main Containers
+#app {
+  display: table;
+  height: 100%;
+}
+
+}

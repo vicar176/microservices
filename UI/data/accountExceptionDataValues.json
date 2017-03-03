@@ -1,0 +1,54 @@
+[
+  {
+    "accountNumber": "672900390178715",
+    "consumerName": "Chris Gorman",
+    "ChargeOffBalance": 169.95,
+    "portfolioNumber": "1555",
+    "Seller": "Citibank",
+    "DocumentType": "GBLTR",
+    "Verified": false,
+    "updateBy": "PepeTico",
+    "lastUpdateDate": "",
+    "accountComment": "",
+    "ducumentPath": ""
+  }, 
+  {
+    "accountNumber": "672900390178432",
+    "consumerName": "Chris Gorman",
+    "ChargeOffBalance": 234.85,
+    "portfolioNumber": "1555",
+    "Seller": "Bank of America",
+    "DocumentType": "GBLTR",
+    "Verified": false,
+    "updateBy": "PepeTico",
+    "lastUpdateDate": "",
+    "accountComment": "",
+    "ducumentPath": ""
+  }, 
+  {
+    "accountNumber": "654900390165348",
+    "consumerName": "Clint Eastwood",
+    "ChargeOffBalance": 130.50,
+    "portfolioNumber": "1652",
+    "Seller": "Bank of America",
+    "DocumentType": "GBLTR",
+    "Verified": false,
+    "updateBy": "PepeTico",
+    "lastUpdateDate": "",
+    "accountComment": "",
+    "ducumentPath": ""
+  }, 
+  {
+    "accountNumber": "654900390985643",
+    "consumerName": "Al Pacino",
+    "ChargeOffBalance": 876.60,
+    "portfolioNumber": "1738",
+    "Seller": "Banco Santander",
+    "DocumentType": "GBLTR",
+    "Verified": false,
+    "updateBy": "PepeTico",
+    "lastUpdateDate": "",
+    "accountComment": "",
+    "ducumentPath": ""
+  }
+]

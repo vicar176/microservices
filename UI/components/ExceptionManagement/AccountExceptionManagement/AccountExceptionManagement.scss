@@ -1,0 +1,144 @@
+@import './styles/core/vars.scss';
+
+:global {
+  .AccountException {
+
+    .account-navigation {
+      margin-top: 3em;
+      margin-bottom: 2em;
+    }
+
+    .btn-group {
+      margin: 0;
+      padding: 0;
+
+      .btn {
+        box-shadow: none;
+        &:focus { outline: 0; }
+      }
+    }
+
+    .content-detail {
+
+      .sub-header { padding-left: 0; }
+
+      .table { margin-bottom: 0; }
+
+        tr.error {
+          color: $red;
+
+          .edit {
+            color: $textColor;
+
+            i {
+              color: $primaryBlue;
+              cursor: pointer;
+            }
+          }
+        }
+
+      .file {
+        margin: 0 .5em;
+        font-size: 1.2em;
+        line-height: 1em;
+        position: relative;
+        top: 3px;
+      }
+
+    }
+
+    .error-box {
+      position: relative;
+
+      input { display: none; }
+
+      &.edit-mode {
+
+        span { display: none; }
+
+        input {
+          width: 12em;
+          height: 2em;
+          margin: 4px;
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          line-height: 1em;
+          font-weight: normal;
+          font-size: 1em;
+          color: $textColor;
+        }
+
+      }
+    }
+
+    .additional-info {
+      padding: .3em 0 0;
+
+      input[type=checkbox] {
+        margin-top: .4em;
+      }
+
+      label,
+      .collapsable-comment {
+        padding-top: .2em;
+        margin-bottom: 0;
+        font-size: .9em;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      .headline-info { padding-bottom: .4em; }
+
+      .collapse { padding-bottom: .5em; }
+
+      .account-status { margin-bottom: 1em; }
+
+    }
+
+    .pagination {
+      margin: 0;
+      padding: 0;
+    }
+
+    .pager {
+      margin: 0 0 10px;
+
+      &.pager-bottom { margin-top: 2em; }
+
+      li {
+        margin: 0 .2em;
+      }
+    }
+
+  }
+}
+
+// @TODO:CSSRef
+// <.bs-example-modal-lg, .switch> - This module needs to be moved to a global level where it can be reused everywhere.
+:global {
+  .bs-example-modal-lg {
+    z-index: 99999;
+
+    button.close {
+      min-width: 0;
+
+      &:hover {
+        background-color: transparent;
+        color: $darkBlue;
+      }
+    }
+
+    .modal-header {
+      padding-top: 1.3em;
+      color: $darkBlue;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .modal-body {
+      padding: 0;
+    }
+  }
+}

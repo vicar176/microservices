@@ -1,0 +1,33 @@
+.TemplateTab {
+  margin-bottom: 2em;
+  position: relative;
+}
+
+.TemplateNavigation {
+  width: 285px;
+  margin-top: 2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: left;
+}
+
+.TemplateMapping {
+  min-height: 200px;
+  margin-left: 300px;
+  // float: right;
+}
+
+:global {
+  .templateMapping.affix {
+    margin-top: 15px;
+  }
+}
+
+  .TemplateControls {
+    width: 100%;
+    height: 44px;
+    float: right;
+    position: relative;
+    z-index: 10;
+  }

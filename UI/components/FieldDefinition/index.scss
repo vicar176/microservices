@@ -1,0 +1,76 @@
+@import './styles/core/vars.scss';
+
+// Field definition styles
+.fieldDefinition {
+  margin-bottom: 1em;
+
+  > thead,
+  > tbody,
+  > tfoot {
+    td {
+      border-right: 1px solid rgba($white, .1);
+
+      &:last-child { border-right: 0; }
+    }
+  }
+
+  > thead {
+    border: 1px solid $primaryBlue;
+    background-color: $primaryBlue;
+    color: $white;
+
+    label { margin-bottom: 0; }
+  }
+
+  > tbody,
+  > tfoot {
+    border: 1px solid $lightenGray;
+
+    td { border-right-color: $lightenGray; }
+  }
+
+  > tfoot {
+    background-color: transparent;
+
+    > tr > td {
+      padding: 0;
+    }
+  }
+}
+
+// Account mapping cta styles
+.mappingCheck {
+  background-color: #f0f0f0;
+  text-align: right;
+  font-size: .9em;
+
+  > tr > td { padding: 0; }
+}
+
+// Account mapping styles
+.accountMapping,
+.policyModalTable {
+  > tbody > tr > td { vertical-align: middle; }
+}
+
+.accountMapping {
+  margin-bottom: 0;
+
+  td, th {
+    border-left: 1px solid $lightenGray;
+    &:first-child { border-left: 0; }
+  }
+
+  > thead {
+    > tr > th {
+      border-bottom: 0;
+      border-left-color: $disabledGray;
+      background-color: darken($disabledGray, 15);
+      color: $white;
+    }
+  }
+}
+
+.policyModalTable {
+  font-size: .9em;
+}

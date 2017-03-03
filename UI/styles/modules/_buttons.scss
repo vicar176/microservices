@@ -1,0 +1,40 @@
+@import "../core/vars";
+
+:global {
+
+  // Upload file button
+  .btn-upload {
+    width: 100%;
+    height: 34px;
+    position: relative;
+    border: 1px solid $darktGray;
+    cursor: pointer;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+
+    .btn-upload-label {
+      width: 15em;
+      height: 34px;
+      padding: 8px 0 0 0;
+      position: absolute;
+      top: -1px;
+      left: -1px;
+
+      i {
+        margin-right: .5em;
+      }
+    }
+
+    .btn-upload-filename {
+      left: 15em;
+      padding-left: 15px;
+      position: relative;
+      line-height: 31px;
+      z-index: 10;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+}

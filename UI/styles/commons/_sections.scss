@@ -1,0 +1,58 @@
+// Global styles
+@import '../core/vars.scss';
+
+:global {
+  // General Styles
+  .text-error {
+    color: $red;
+  }
+
+  // Sidebar
+  .main-sidebar {
+    z-index: 100;
+  }
+
+  // Sections separators
+  .sec-divider {
+    margin-bottom: 1.5em !important;
+    padding-bottom: 1.5em !important;
+    border-bottom: 1px solid $lightGray;
+    &, .main-content & { margin-bottom: 1em; }
+  }
+
+  // Panel heading section
+  .tab-content,
+  .tab-header {
+    position: relative;
+  }
+
+    .page-header {
+      padding-top: 15px !important;
+      padding-bottom: 20px !important;
+      margin-top: 0 !important;
+    }
+
+  // Switcher
+  .mod-switcher {
+    &-controls {
+      margin: 2em 0 0;
+      text-align: center;
+
+      button, a {
+        margin: 0.3em auto;
+      }
+    }
+  }
+
+  // Modals
+  .modal .modal-table {
+    .cssload-wrapper { margin: 2em; }
+
+    .modal-body {
+      padding: 0;
+
+      .table-log { margin-bottom: 0; }
+    }
+  }
+
+}

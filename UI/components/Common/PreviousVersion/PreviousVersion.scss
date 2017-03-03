@@ -1,0 +1,42 @@
+@import './styles/core/vars.scss';
+
+.previousVersion {
+  margin: 0 -10px;
+  position: relative;
+  top: 5px;
+
+  .previousVersionCta {
+    width: 130px;
+    position: absolute;
+    right: 10px;
+
+    :global .form-control {
+      padding: 2px 4px 2px 7px;
+      font-size: 12px;
+
+      option {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .previousMode {
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    top: -10px;
+    background-color: $darkGreen;
+    z-index: 50;
+
+    h3 {
+      margin: .65em 0 0;
+      font-size: 1em;
+      color: $white;
+    }
+
+    button {
+      border-color: transparent;
+      margin-left: .8em;
+    }
+  }
+}

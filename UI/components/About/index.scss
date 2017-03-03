@@ -1,0 +1,15 @@
+:global {
+  #about-page {
+    .tab-content {
+      min-height: 20em;
+      border-right: none;
+      border-bottom: none;
+
+      h1 { margin-top: 0; }
+    }
+
+    .label {
+      padding: .4em .6em;
+    }
+  }
+}

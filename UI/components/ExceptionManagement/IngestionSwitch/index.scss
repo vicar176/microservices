@@ -1,0 +1,25 @@
+@import './styles/core/vars.scss';
+
+.ingestionSwitch {
+  > div { float: left; }
+
+  label { margin: 0; }
+
+  :global {
+    .switch {
+      line-height: 0;
+    }
+  }
+
+  .switchLegend {
+    color: $textColor;
+  }
+
+  .switchinfo {
+    margin-right: .5em;
+    color: $disabledGray;
+    font-size: .85em;
+    line-height: 21px;
+  }
+
+}

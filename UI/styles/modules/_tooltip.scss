@@ -1,0 +1,31 @@
+:global {
+
+  .tooltip {
+    min-width: 15em;
+    .tooltip-inner {
+      max-width: 100%;
+      text-align: left;
+    }
+  }
+
+  .popover-indicator {
+    span {
+      padding: .3em;
+      display: inline-block;
+      cursor: default;
+      &:hover { background-color: lighten($lightBlue, 55); }
+    }
+  }
+
+  // OALD Profile
+  #tooltip-oald-profile {
+    min-width: 0;
+    .tooltip-inner { max-width: 22em; }
+  }
+
+  // Document Field Profile
+  #tooltip-reserved {
+    min-width: 0;
+    .tooltip-inner { max-width: 12em; }
+  }
+}

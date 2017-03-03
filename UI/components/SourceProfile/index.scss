@@ -1,0 +1,23 @@
+@import './styles/core/vars.scss';
+
+.sourceProfile {
+  .validationIcon {
+    position: relative;
+
+    input { padding-right: 2.3em; }
+
+    i {
+      margin-top: -.5em;
+      position: absolute;
+      right: .8em;
+      top: 50%;
+    }
+  }
+
+  :global #configProfile .sec-divider {
+    margin-top: 2em;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+  }
+}

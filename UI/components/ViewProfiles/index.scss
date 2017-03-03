@@ -1,0 +1,120 @@
+@import './styles/core/vars.scss';
+
+.filterGrid {
+  margin-bottom: 15px;
+
+  th, td { width: 1px; }
+
+  & > thead > tr > th {
+    border-bottom: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-transform: none !important;
+  }
+
+  :global .glyphicon {
+    font-size: 1.2em;
+  }
+
+  :global .cta-filter {
+    margin: 4px 10px 0;
+    font-size: 1.1em;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+// Filter top section
+.gridHeader {
+  :global {
+    .sortable {
+      padding-right: 1.5em;
+      display: block;
+      position: relative;
+
+      .glyphicon {
+        margin: 1em .3em 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: .6em;
+        float: right;
+        color: $darktGray;
+
+        &.active{
+          color: $lightBlue;
+        }
+
+        &-chevron-up {
+          margin-top: .1em;
+        }
+      }
+    }
+  }
+}
+
+// Filter content
+.gridContent {
+  font-size: .9em;
+
+  > tr:hover {
+    background-color: lighten($lightenGreen, 22) !important;
+    color: $black;
+  }
+}
+
+// Filters
+.filterControls {
+  background-color: $lightGray;
+
+  > th:not(:last-child) {
+    border-right-color: transparent !important;
+  }
+
+  label {
+    margin-bottom: 0;
+    display: block;
+    position: relative;
+
+    :global .glyphicon {
+      margin-top: -.5em;
+      position: absolute;
+      top: 50%;
+      right: .8em;
+      font-size: .8em;
+      color: $disabledGray;
+      cursor: pointer;
+    }
+
+    &:hover :global .glyphicon {
+      &:before,
+      &.filtered:before {
+        content: "\e014";
+        color: $red;
+      }
+    }
+
+    & :global .glyphicon.filtered:before {
+      content: "\e013";
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: .2em 1.8em .2em .4em;
+    border: 1px solid $darktGray;
+  }
+
+  button {
+    min-width: 0;
+    padding: 6px 10px;
+    font-size: .9em;
+    line-height: 1em;
+  }
+
+  .filterBtn {
+    margin-right: 10px;
+  }
+}

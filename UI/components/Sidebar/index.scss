@@ -1,0 +1,29 @@
+:global {
+
+  .sidebar-close {
+    .logoText, .logo {
+      display: none;
+    }
+
+    .panelLogo {
+      display: block;
+    }
+  }
+
+  .sidebar-header {
+    .logo, .logo-text {
+      margin: 1px 0 0 10px;
+      position: absolute;
+    }
+
+    .logoText {
+      margin: 0 0 0 63px;
+      bottom: 18px;
+    }
+  }
+
+  .panelLogo {
+    margin: 22px 0 0 10px;
+    display: none;
+  }
+}

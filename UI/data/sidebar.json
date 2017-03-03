@@ -1,0 +1,36 @@
+{
+  "error": {
+    "code": 200,
+    "message": ""
+  },
+  "data": {
+    "items": [{
+      "id": "media-profile",
+      "name": "Media Profile",
+      "iconClassName": "dashboard",
+      "links": {
+        "media-profile/oald-profile": {
+          "name": "OALD Profile"
+        },
+        "media-profile/field-definition": {
+          "name": "Field Definition Profile"
+        },
+        "media-profile/document-field-profile": {
+          "name": "Document Field Profile"
+        },
+        "media-profile/template-profile": {
+          "name": "Template Mapping Profile"
+        }
+      }
+    }, {
+      "id": "exception-management",
+      "name": "Exception Management",
+      "iconClassName": "modal-window",
+      "links": {
+        "exception-management": {
+          "name": "Exception Management"
+        }
+      }
+    }]
+  }
+}

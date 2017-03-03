@@ -1,0 +1,27 @@
+.main {
+  margin-top: 1.5em;
+}
+
+.authBtn {
+  padding: 0.5em 1.5em;
+  color: #28568A;
+  border: 1px solid #28568A;
+  border-radius: 3px;
+  text-decoration: none;
+  -webkit-user-select: none;
+  display: inline-block;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin-left: 1em;
+}
+
+.authBtn:link, .authBtn:visited, .authBtn:active  {
+  color: #28568A;
+  text-decoration: none;
+}
+
+.authBtn:hover {
+  color: white;
+  background-color: #28568A;
+  text-decoration: none;
+}

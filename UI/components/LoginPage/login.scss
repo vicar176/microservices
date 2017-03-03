@@ -1,0 +1,106 @@
+.loginContainer{
+  margin: 50px auto;
+  max-width: 340px;
+  border: #eee solid 1px;
+  background:#fff;
+  position: relative;
+  /*box-shadow: 0 5px 10px -6px #777;*/
+  padding-bottom: 10px;
+  border-radius:5px 5px 5px 5px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+.loginContainer h2{ border-bottom:#ddd solid 1px; padding: 10px 0 20px; margin-bottom:30px; text-align: center; color:#0069AA; background:#fefefe;}
+.loginContainer .custom-checkbox{ text-align: left;}
+.loginContainer input[type="text"], .loginContainer input[type="password"] {
+  display:block;
+  height: 40px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fcfcfc;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  width:300px;
+  margin:25px auto 15px;
+  position: relative;
+
+}
+
+.loginContainer.custom-checkbox{
+  text-align: left;
+}
+
+.loginContainer input[type="checkbox"]{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.loginContainer label{
+  margin-left:5px;
+}
+
+.loginContainer input[type="submit"]{
+  width:300px;
+  text-align:center;
+  margin:15px auto 15px;
+  position:relative;
+  display: block;
+  padding: 10px 12px;
+  font: bold 14px/1.4285em Arial;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.loginContainer input[type="submit"]:focus{
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+
+.loginContainer input[type="submit"]:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.loginContainer a{
+  padding-left:20px;
+}
+
+.loginContainer p{
+  width:300px;
+  margin: 0 auto 10px;
+  color:#a94442;
+  text-align: left;
+  position: relative;
+}
+
+
+.loginContainer ul{
+  margin-top:5px;
+}
+.loginContainer ul li a{
+  padding-left: 0px;
+}

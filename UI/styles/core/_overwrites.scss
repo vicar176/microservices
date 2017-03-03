@@ -1,0 +1,22 @@
+// This file is intented to storage all customization of the react controls and componentes
+
+//*** React select overwrites
+// Custom variables
+$select-input-border-radius: 0;
+$select-input-height: 34px;
+
+//*** Toastr custom overwrites
+//TODO:CSSRef Move toastr styles here
+
+// TODO:CSSRef - Look at a solution to import node module styles directly and overwrite their variables
+:global {
+  .Select-control {
+    height: $select-input-height;
+    border-radius: $select-input-border-radius;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  }
+
+    .Select-input {
+      height: $select-input-height - 2px;
+    }
+}

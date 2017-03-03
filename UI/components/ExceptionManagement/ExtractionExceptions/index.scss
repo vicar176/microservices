@@ -1,0 +1,107 @@
+@import './styles/core/vars.scss';
+.selectMultiple{
+  z-index: 2;
+}
+// tabs
+.accordionTabs {
+  .accordionHeading {
+    border-color: #C5C5C5;
+    font-weight: 700;
+
+    & > div {
+      background-color: #e0e0e0;
+    }
+  }
+
+  .accordionTab {
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      &:global(.collapsed) { background-color: #e6e6e6; }
+    }
+  }
+
+  .accordionDetailContent {
+    display: block;
+
+    // table { border: 0; }
+
+    :global {
+      .nav-tabs > li {
+        &.active > a { outline: none; }
+      }
+
+      .tab-content {
+        margin-bottom: 0;
+
+        .tab-pane { padding: 0; }
+      }
+    }
+  }
+
+  :global {
+    .panel { box-shadow: none; }
+
+    .nav-tabs, .tab-content { border: none; }
+
+    .nav-tabs {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+// reProcess CTA
+.reprocessCta {
+  padding: 0 .9em;
+}
+
+// failed popup
+.failedDocsPopOver {
+  min-width: 182px;
+  min-height: 90px;
+  margin-top: -14px;
+  margin-left: 15px !important;
+  z-index: 1000;
+
+  :global {
+    .arrow {
+      top: 57px !important;
+    }
+  }
+}
+
+.failedDocsClosePopOver {
+  display: block;
+  padding-right: 1.5em;
+  :global .glyphicon-remove {
+    left: 1.8em;
+  }
+}
+
+.popOverWrap {
+
+}
+
+.failedDocsList {
+  margin-bottom: 0;
+  padding: .5em 1.5em;
+  list-style: none;
+  text-align: center;
+
+  li {
+    margin-bottom: .5em;
+
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+.rotate{
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

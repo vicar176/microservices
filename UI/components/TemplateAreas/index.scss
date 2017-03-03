@@ -1,0 +1,26 @@
+.addNew {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.mainNav {
+  padding-top: 1em;
+  //padding-right: 15px;
+}
+
+:global {
+  // #MainNav.affix {
+  //   height: 100%;
+  //
+  //   .menu-container {
+  //       height: 100%;
+  //       overflow-y: auto;
+  //       width: 100%;
+  //   }
+  // }
+  .menu-container {
+    h3 {
+      margin: 0;
+    }
+  }
+}

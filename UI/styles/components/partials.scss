@@ -1,0 +1,27 @@
+@import '../core/vars.scss';
+
+// Row Heading
+.rowHeading {
+  border: 1px solid $lightenGray;
+  background-color: $bgColor1;
+  font-weight: bold;
+  color: $darkenGray;
+}
+
+// Pagination
+.paginationWrap {
+  margin-top: 1.5em;
+  margin-right: 0px;
+  :global .pagination {
+    margin-top: 0;
+  }
+}
+
+.pagerCounter {
+  max-width: 100px;
+  float: right;
+
+  option[disabled] {
+    background-color: #ddd;
+  }
+}

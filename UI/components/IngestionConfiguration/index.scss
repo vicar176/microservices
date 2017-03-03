@@ -1,0 +1,41 @@
+// Global styles
+@import './styles/core/vars.scss';
+
+.utilsList {
+
+  label {
+    margin: 4px 0 2px;
+    display: block;
+    cursor: pointer;
+  }
+
+  :global .list-group-item {
+    position: relative;
+    cursor: pointer;
+
+    .pull-right {
+      position: absolute;
+      right: 15px;
+      top: 8px;
+
+      span {
+        display: inline-block;
+        padding-top: 4px;
+      }
+    }
+
+    &:hover {
+      background-color: #efefef;
+    }
+  }
+
+}
+
+.rowError{
+  background-color: $red !important;
+  color: $white;
+  &:hover{
+    background-color: $red !important;
+    color: $white;
+  }
+}

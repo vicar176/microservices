@@ -1,0 +1,13 @@
+@import '../core/vars.scss';
+
+:global {
+  .pagination {
+    li a {
+      cursor: pointer;
+    }
+  }
+
+  .nav > li.disabled > a {
+    color: $lightenGray;
+  }
+}

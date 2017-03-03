@@ -1,0 +1,40 @@
+@import './styles/core/vars.scss';
+
+.currentDocumentIndicatior {
+  text-transform: uppercase;
+  color: $textColor;
+
+  i {
+    padding: 0 .2em 0 1em;
+    position: relative;
+    top: 2px;
+    left: -.2em;
+    font-size: .9em;
+    color: $primaryBlue;
+  }
+}
+
+.fielDefinitionsGrid {
+  margin: 15px 0 0;
+
+  > thead {
+    border: 1px solid $primaryBlue;
+    background-color: $primaryBlue;
+    color: $white;
+
+    > tr > th { border-right: 1px solid rgba($white, .1); }
+  }
+
+  tbody > tr > td { vertical-align: middle; }
+
+  select { text-align: center; }
+}
+
+.ctaSection {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.sign{
+  color: $primaryBlue;
+}

@@ -1,0 +1,406 @@
+{
+    "error": {
+        "code": 200,
+        "message": "Operation Find all Document Field Definition"
+    },
+    "data": [
+        {
+            "createDate": "2016-07-28T15:51:02Z",
+            "updateDate": "2016-07-28T15:51:02Z",
+            "updatedBy": "varias",
+            "version": 1,
+            "id": "8956c99f-e01e-4233-96de-305851cc730a",
+            "accountVerification": false,
+            "active": false,
+            "fieldDefinitions": [
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Consumer Name",
+                        "fieldName": "consumerName",
+                        "fieldType": "alphanumeric",
+                        "databaseMapping": [
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSFNM"
+                            },
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSMNM"
+                            },
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSLNM"
+                            }
+                        ],
+                        "operators": [
+                            {
+                                "symbol": "append",
+                                "name": "APPEND"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Original Account Number",
+                        "fieldName": "originalAccountNumber",
+                        "fieldType": "number",
+                        "databaseMapping": [
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSOACT"
+                            }
+                        ],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "OALD Balance",
+                        "fieldName": "oaldBalance",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Payments",
+                        "fieldName": "payments",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "STMT Date",
+                        "fieldName": "stmtDate",
+                        "fieldType": "date",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": false,
+                    "verification": false,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Fees",
+                        "fieldName": "fees",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": false,
+                    "verification": false,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Interest",
+                        "fieldName": "interest",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                }
+            ],
+            "documentType": {
+                "id": 1,
+                "code": "stmt"
+            }
+        },
+        {
+            "createDate": "2016-07-28T16:15:27Z",
+            "updateDate": "2016-07-28T16:15:27Z",
+            "updatedBy": null,
+            "version": 1,
+            "id": "af910d4b-70e4-4fc5-bf84-90ab1f394113",
+            "accountVerification": false,
+            "active": false,
+            "fieldDefinitions": [
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Consumer Name",
+                        "fieldName": "consumerName",
+                        "fieldType": "alphanumeric",
+                        "databaseMapping": [
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSFNM"
+                            },
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSMNM"
+                            },
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSLNM"
+                            }
+                        ],
+                        "operators": [
+                            {
+                                "symbol": "append",
+                                "name": "APPEND"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Original Account Number",
+                        "fieldName": "originalAccountNumber",
+                        "fieldType": "number",
+                        "databaseMapping": [
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSOACT"
+                            }
+                        ],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "OALD Balance",
+                        "fieldName": "oaldBalance",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                }
+            ],
+            "documentType": {
+                "id": 2,
+                "code": "gbltr"
+            }
+        },
+        {
+            "createDate": "2016-07-28T16:15:49Z",
+            "updateDate": "2016-07-28T16:15:49Z",
+            "updatedBy": null,
+            "version": 1,
+            "id": "dca4fa09-22bf-4953-bd47-9b5c84ee1a21",
+            "accountVerification": false,
+            "active": false,
+            "fieldDefinitions": [
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Consumer Name",
+                        "fieldName": "consumerName",
+                        "fieldType": "alphanumeric",
+                        "databaseMapping": [
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSFNM"
+                            },
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSMNM"
+                            },
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSLNM"
+                            }
+                        ],
+                        "operators": [
+                            {
+                                "symbol": "append",
+                                "name": "APPEND"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Original Account Number",
+                        "fieldName": "originalAccountNumber",
+                        "fieldType": "number",
+                        "databaseMapping": [
+                            {
+                                "schema": "CCDATA",
+                                "table": "RCMAST",
+                                "field": "MSOACT"
+                            }
+                        ],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "OALD Balance",
+                        "fieldName": "oaldBalance",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Payments",
+                        "fieldName": "payments",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "STMT Date",
+                        "fieldName": "stmtDate",
+                        "fieldType": "date",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": true,
+                    "verification": true,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Fees",
+                        "fieldName": "fees",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                },
+                {
+                    "required": false,
+                    "verification": false,
+                    "fieldDefinition": {
+                        "createDate": "2016-07-27T18:40:25Z",
+                        "updateDate": "2016-07-27T18:40:25Z",
+                        "updatedBy": "varias",
+                        "version": 1,
+                        "id": null,
+                        "fieldDescription": "Interest",
+                        "fieldName": "interest",
+                        "fieldType": "number",
+                        "databaseMapping": [],
+                        "operators": []
+                    }
+                }
+            ],
+            "documentType": {
+                "id": 3,
+                "code": "thst"
+            }
+        }
+    ]
+}

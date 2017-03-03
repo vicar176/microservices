@@ -1,0 +1,145 @@
+.TemplatePage {
+  position: relative;
+  //margin-top: -1em;
+  //margin-bottom: 1.8em;
+}
+
+.templatePageTemplate {
+  outline: 1px solid;
+  width: 100%;
+  overflow: auto;
+  margin-top: 1em;
+}
+
+.templatePageWrapper {
+  width: 100%;
+  position: relative;
+  max-height: 1000px;
+}
+
+.templatePageImg {
+  width: auto;
+  display: block;
+  outline: 1px solid #ccc;
+  cursor: crosshair;
+  visibility: hidden;
+}
+
+.templatePageImg::selection {
+  background-color: transparent;
+}
+
+$borderWidth: 2px;
+
+.templatePageZone {
+  position: absolute;
+  background-color: rgba(0, 0, 0, .1);
+  outline: $borderWidth solid #6363F5;
+  cursor: move;
+}
+
+.active {
+  outline: $borderWidth dotted #666;
+}
+
+.selected {
+  outline-color: #639BF5;
+  outline-style: dotted;
+}
+
+.required {
+  outline-color: #F56363;
+}
+
+.referenceZone {
+  outline-color: #F5A663;
+}
+
+.border {
+  position: absolute;
+  background-color: transparent;
+}
+
+.corner {
+  height: $borderWidth;
+  width: $borderWidth;
+}
+
+.top,
+.bottom {
+  height: $borderWidth;
+  width: 100%;
+}
+
+.top {
+  top: -$borderWidth;
+  cursor: n-resize;
+}
+
+.topLeft {
+  top: -$borderWidth;
+  left: -$borderWidth;
+  cursor: nw-resize;
+}
+
+.topRight {
+  top: -$borderWidth;
+  right: -$borderWidth;
+  cursor: ne-resize;
+}
+
+.bottom {
+  bottom: -$borderWidth;
+  cursor: s-resize;
+}
+
+.bottomLeft {
+  bottom: -$borderWidth;
+  left: -$borderWidth;
+  cursor: sw-resize;
+}
+
+.bottomRight {
+  bottom: -$borderWidth;
+  right: -$borderWidth;
+  cursor: se-resize;
+}
+
+.left,
+.right {
+  width: $borderWidth;
+  height: 100%;
+}
+
+.left {
+  left: -$borderWidth;
+  cursor: w-resize;
+}
+
+.right {
+  right: -$borderWidth;
+  cursor: e-resize;
+}
+
+.areaId {
+  display: inline-block;
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  top: -17px;
+  line-height: 15px;
+  text-align: center;
+  margin-left: -$borderWidth;
+  font-size: 70%;
+  font-weight: bold;
+  color: #fff;
+  background: #6363F5;
+}
+
+.areaIdRef {
+  background: #F5A663;
+}
+
+.areaIdRequired {
+  background: #F56363;
+}
