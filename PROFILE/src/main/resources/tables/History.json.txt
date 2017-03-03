@@ -1,0 +1,63 @@
+var params = {
+    "TableName": "MCM-DDB-MEDIA-STORAGE-DIA-LOG-HISTORY-DEV",
+    "KeySchema": [
+      {
+        "AttributeName": "id",
+        "KeyType": "HASH"
+      },
+      {
+        "AttributeName": "entryDate",
+        "KeyType": "RANGE"
+      }
+    ],
+    "AttributeDefinitions": [
+      {
+        "AttributeName": "eventCode",
+        "AttributeType": "S"
+      },
+      {
+        "AttributeName": "entryDate",
+        "AttributeType": "S"
+      },
+      {
+        "AttributeName": "id",
+        "AttributeType": "S"
+      },
+      {
+        "AttributeName": "serviceName",
+        "AttributeType": "S"
+      }
+    ],
+    
+    "GlobalSecondaryIndexes": [
+      {
+        "IndexName": "ServiceNameAndEventCodeIndex",
+        "KeySchema": [
+          {
+            "AttributeName": "serviceName",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "eventCode",
+            "KeyType": "RANGE"
+          }
+        ],
+        "Projection": {
+          "ProjectionType": "ALL"
+        },
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 10,
+          "WriteCapacityUnits": 10
+        }
+      }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 10,
+      "WriteCapacityUnits": 10
+    }
+};
+
+dynamodb.createTable(params, function(err, data) {
+    if (err) print(err);
+    else print(data);
+});

@@ -1,0 +1,46 @@
+package com.mcmcg.dia.iwfm.entity;
+
+/**
+ * @author Victor Arias
+ *
+ */
+public class DocumentException extends BaseEntity {
+
+	private Long batchProfileJobId;
+	private String documentId;
+	private int status;
+	private String errorDescription;
+
+	public Long getBatchProfileJobId() {
+		return batchProfileJobId;
+	}
+
+	public void setBatchProfileJobId(Long batchProfileJobId) {
+		this.batchProfileJobId = batchProfileJobId;
+	}
+
+	public String getDocumentId() {
+		return documentId;
+	}
+
+	public void setDocumentId(String documentId) {
+		this.documentId = documentId;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getErrorDescription() {
+		return errorDescription;
+	}
+
+	public void setErrorDescription(String errorDescription) {
+		this.errorDescription = errorDescription;
+	}
+
+}

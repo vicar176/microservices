@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       ">
+
+	<util:map id="queriesMap" key-type="java.lang.String"
+		value-type="java.lang.String">
+
+		<!-- GET ALL -->
+		<entry key="GET_ALL_OALD">
+			<value>
+				select 	meta().id , productGroup.name as productGroupName, portfolio.id as portfolioId, 
+       					originalLender.name as originalLenderName, documentTypes, version  
+						from `media-dia` 
+						WHERE type = "OaldProfileEntity"
+			</value>
+		</entry>
+		
+		<entry key="GET_OALD_WITH_FILTER">
+			<value>
+				select meta().id, createDate, documentTypes, originalLender, portfolio, 
+				productGroup, type, updateDate, updatedBy, version
+				from `media-dia` 
+				WHERE type = "OaldProfileEntity"
+			</value>
+		</entry>
+		
+		<entry key="GET_ALL_TEMPLATEMAPPING">
+			<value>
+				select meta().id as templateId, name, documentType.code documentTypeCode, seller.name sellerName, 
+				originalLenders, affinities, version 
+				from `media-dia` WHERE type = "TemplateMappingEntity"
+			</value>
+		</entry>
+		
+		<entry key="GET_ALL_TEMPLATEMAPPING_FOR_AFFINITIES">
+			<value>
+				select meta().id, affinities, createDate, documentType, name, originalLenders,
+				referenceAreas, sampleFileName, seller, totalPages, type, updateDate, updatedBy,
+				version, zoneMappings
+				from `media-dia` WHERE type = "TemplateMappingEntity"
+				AND ANY lender IN originalLenders SATISFIES lender IN [?] END
+			</value>
+		</entry>
+
+		<!-- GET COUNT -->
+		<entry key="GET_COUNT_OALD">
+			<value>
+				select 	count(*)  as total
+						from `media-dia` 
+						WHERE type = "OaldProfileEntity"
+			</value>
+		</entry>
+
+		<entry key="GET_COUNT_TEMPLATEMAPPING">
+			<value>
+				select 	count(*)  as total
+						from `media-dia` 
+						WHERE type = "TemplateMappingEntity"
+			</value>
+		</entry>
+		
+		<entry key="GET_ALL_FIELDDEFINITION">
+			<value>
+				SELECT meta().id, fieldName, fieldType, fieldDescription, databaseMapping[*].field as accountField, active, version 
+				FROM `media-dia` 
+				WHERE type = "FieldDefinitionEntity"
+			</value>
+		</entry>
+		
+		<entry key="GET_COUNT_FIELDDEFINITION">
+			<value>
+				SELECT 	count(*)  as total
+				FROM `media-dia`
+				WHERE type = "FieldDefinitionEntity"
+			</value>
+		</entry>
+		
+		<entry key="GET_DOCUMENTFIELDS_WITH_FIELDDEFINITION">
+			<value>
+				SELECT meta().id 
+				FROM `media-dia` 
+				WHERE type = "DocumentFieldsDefinitionEntity"
+				and any child in fieldDefinitions satisfies child.fieldDefinition.id = "?" end
+			</value>
+		</entry>
+
+	</util:map>
+
+</beans>

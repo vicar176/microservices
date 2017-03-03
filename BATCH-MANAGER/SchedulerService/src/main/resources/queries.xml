@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       ">
+
+	<util:map id="queriesMap" key-type="java.lang.String"
+		value-type="java.lang.String">
+
+		<entry key="INGESTIONSTATE_FIND_ID">
+			<value>
+				SELECT Ingestion_State_Id, Ingestion_State_Code FROM
+				Media.Ingestion_State WHERE Ingestion_State_Id = ?
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTATE_FIND_CODE">
+			<value>
+				SELECT Ingestion_State_Id, Ingestion_State_Code FROM
+				Media.Ingestion_State WHERE Ingestion_State_Code = ?
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTATE_FIND_ALL">
+			<value>
+				SELECT Ingestion_State_Code FROM Media.Ingestion_State
+			</value>
+		</entry>
+
+		<entry key="STATUS_FIND_ID">
+			<value>
+				SELECT * FROM Status WHERE id = ?
+			</value>
+		</entry>
+
+		<entry key="STATUS_FIND_CODE">
+			<value>
+				SELECT * FROM Status WHERE code = ?
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_SAVE">
+			<value>
+				INSERT INTO Media.Ingestion_Step (Workflow_State_Id,
+				Rerun_Number, Description, Status_Code, Ingestion_State_Code,
+				Created_By, Created_On_Date, Changed_On_Date, Changed_By,
+				Workstation_Name, Application_Id)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,
+				?, ?)
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_FIND_ID">
+			<value>
+				SELECT * FROM IngestionStep WHERE id = ?
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_FIND_WORKFLOWID_INGESTIONSTATECODE">
+			<value>
+				SELECT Ingestion_Step_Id, Workflow_State_Id, Rerun_Number,
+				Description, Status_Code, Ingestion_State_Code, Changed_By,
+				Created_On_Date, Changed_On_Date
+				FROM Media.Ingestion_Step WHERE
+				Workflow_State_Id = ? AND
+				Ingestion_State_Code = ?
+				ORDER BY
+				Created_On_Date DESC LIMIT 1
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_FIND_WORKFLOWID">
+			<value>
+				SELECT Ingestion_Step_Id, Workflow_State_Id, Rerun_Number,
+				Description, Status_Code, Ingestion_State_Code, Changed_By,
+				Created_On_Date, Changed_On_Date
+				FROM Media.Ingestion_Step
+				WHERE
+				Workflow_State_Id = ?
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_FIND_DOCUMENTID">
+			<value>
+				SELECT Ingestion_Step_Id, Workflow_State_Id, Rerun_Number,
+				Description, Status_Code, Ingestion_State_Code, Changed_By,
+				Created_On_Date, Changed_On_Date
+				FROM Media.Ingestion_Step
+				WHERE
+				Workflow_State_Id IN
+				(SELECT Workflow_State_Id FROM
+				Media.Workflow_State WHERE Document_Id = ?)
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_FILTERING_COUNT">
+			<value>
+				SELECT COUNT(*) AS count FROM (?) T1
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_FILTERING">
+			<value>
+				SELECT Ingestion_Step.Created_On_Date AS date,
+				Workflow_State.Document_Id AS documentId,
+				Ingestion_Step.Ingestion_State_Code AS step,
+				Ingestion_Step.Rerun_Number AS count,
+				Ingestion_Step.Description AS
+				description
+				FROM Media.Ingestion_Step
+				INNER JOIN Media.Workflow_State
+				ON Workflow_State.Workflow_State_Id =
+				Ingestion_Step.Workflow_State_Id
+				INNER JOIN Media.Workflow_State
+				state ON state.Rerun_Number = Ingestion_Step.Rerun_Number
+				INNER JOIN
+				Media.Document_Images ON Document_Images.Document_Id =
+				Workflow_State.Document_Id
+				WHERE Ingestion_Step.Status_Code =
+				"Failed"
+				AND (Document_Images.Ingestion_Status = "Failure"
+				OR
+				Document_Images.Ingestion_Status = "Skipped")
+			</value>
+		</entry>
+
+		<entry key="INGESTIONSTEP_FILTERING_GROUPBY">
+			<value>
+				GROUP BY Workflow_State.Document_Id,
+				Ingestion_Step.Ingestion_State_Code
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSTATE_SAVE">
+			<value>
+				INSERT INTO Media.Workflow_State (Document_Id, Force_Rerun,
+				Rerun_Number, Ingestion_State_Code, Created_By, Changed_By,
+				Workstation_Name, Application_Id)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSTATE_FIND_ID">
+			<value>
+				SELECT Workflow_State_Id, Document_Id, Force_Rerun,
+				Rerun_Number, Ingestion_State_Code FROM Media.Workflow_State WHERE
+				Workflow_State_Id = ?
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSTATE_FIND_DOCUMENTID">
+			<value>
+				SELECT Workflow_State_Id, Document_Id, Force_Rerun,
+				Rerun_Number, Ingestion_State_Code, Changed_By FROM
+				Media.Workflow_State WHERE Document_Id = ?
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSTATE_UPDATE">
+			<value>
+				UPDATE Media.Workflow_State SET Ingestion_State_Code = ?,
+				Rerun_Number = ?, Force_Rerun = ?, Changed_By = ?, Changed_On_Date =
+				CURRENT_TIMESTAMP
+				WHERE Workflow_State_Id = ?
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSTATE_UPDATE_RERUN">
+			<value>
+				UPDATE Media.Workflow_State SET Force_Rerun = ?, Changed_By =
+				?, Changed_On_Date = CURRENT_TIMESTAMP WHERE Workflow_State_Id = ?
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSTATE_UPDATE_STATE">
+			<value>
+				UPDATE Media.Workflow_State SET Ingestion_State_Code = ?,
+				Changed_By = ?, Changed_On_Date = CURRENT_TIMESTAMP WHERE
+				Workflow_State_Id = ?
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSHUTDOWNSTATE_FIND">
+			<value>
+				SELECT Workflow_Shutdown_StateId, Shutdown_State, Changed_By,
+				Changed_On_Date FROM Media.Workflow_Shutdown_State ORDER BY
+				Changed_On_Date DESC LIMIT 1
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSHUTDOWNSTATE_SAVE">
+			<value>
+				INSERT INTO Media.Workflow_Shutdown_State (Shutdown_State,
+				Created_By, Changed_By, Workstation_Name, Application_Id)
+				VALUES (?,
+				?, ?, ?, ?)
+			</value>
+		</entry>
+
+		<entry key="WORKFLOWSHUTDOWNSTATE_UPDATE">
+			<value>
+				UPDATE Media.Workflow_Shutdown_State SET Shutdown_State = ?,
+				Changed_By = ?, Changed_On_Date = CURRENT_TIMESTAMP WHERE
+				Workflow_Shutdown_StateId = ?
+			</value>
+		</entry>
+
+		<entry key="INSERT_DOCUMENT_EXCEPTIONS">
+			<value>
+				INSERT INTO Media.DocumentException ( BatchProfileJobId,
+				DocumentId, DocumentStatusId,
+				ErrorDescription,CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+			</value>
+		</entry>
+
+		<entry key="RETRIVE_BATCH_PROFILE_JOB">
+			<value>
+				select BatchProfileId,Version, JobStatusId,
+				ExecutionStartDateTime,
+				ExecutionEndDateTime,
+				TotalDocumentsToBeProcessed,
+				DocumentsProcessed,
+				DocumentsInException,
+				DocumentsFailed,DeleteTempDataAfter,
+				CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId
+				from Media.BatchProfileJob;
+			</value>
+		</entry>
+
+		<entry key="INSERT_BATCH_PROFILE_JOB">
+			<value>
+				INSERT INTO Media.BatchProfileJob ( BatchProfileId,Version,
+				JobStatusId,
+				ExecutionStartDateTime, ExecutionEndDateTime,
+				TotalDocumentsToBeProcessed, DocumentsProcessed,
+				DocumentsInException,
+				DocumentsFailed,DeleteTempDataAfter,
+				CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId)
+				VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?);
+			</value>
+		</entry>
+		<entry key="TEMPTABLE_CREATE_FOR_DOCID">
+			<value>
+				CREATE TABLE ?
+				(TempTableId BIGINT NOT NULL AUTO_INCREMENT,
+				DocumentId BIGINT,
+				Created_By VARCHAR(128),
+				Created_On_Date TIMESTAMP,
+				Changed_By VARCHAR(128),
+				Changed_On_Date TIMESTAMP,
+				Workstation_Name
+				VARCHAR(256),
+				Application_Id INTEGER,
+				PRIMARY KEY (TempTableId))
+			</value>
+		</entry>
+
+	</util:map>
+
+</beans>

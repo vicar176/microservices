@@ -1,0 +1,86 @@
+var params = {
+    TableName: 'MCM-DDB-MEDIA-STORAGE-DIA-PROFILE-TEMPLATEMAPPINGPROFILE-DEV',
+    KeySchema: [
+        {
+            AttributeName: 'id',
+            KeyType: 'HASH',
+        }
+    ],
+    AttributeDefinitions: [
+        {
+            AttributeName: 'id',
+            AttributeType: 'S',
+        },
+		{
+            AttributeName: 'documentType.code',
+            AttributeType: 'S'
+        },
+		{
+            AttributeName: 'seller.id',
+            AttributeType: 'N'
+        },
+		{
+            AttributeName: 'originalLender.name',
+            AttributeType: 'S'
+        }
+    ],
+    ProvisionedThroughput: {
+        ReadCapacityUnits: 1000, 
+        WriteCapacityUnits: 1000, 
+    },
+	GlobalSecondaryIndexes: [
+        {
+			IndexName: 'DocumentTypeCodeIndex',
+			KeySchema: [
+				{
+					AttributeName: 'documentType.code',
+					KeyType: 'HASH'
+				},
+			],
+			Projection: { 
+				ProjectionType: 'KEYS_ONLY',
+			},
+			ProvisionedThroughput: {
+				ReadCapacityUnits: 1000,
+				WriteCapacityUnits: 1000
+			}
+        },
+		{
+			IndexName: 'SellerIdIndex',
+			KeySchema: [
+				{
+					AttributeName: 'seller.id',
+					KeyType: 'HASH'
+				},
+			],
+			Projection: {
+				ProjectionType: 'KEYS_ONLY',
+			},
+			ProvisionedThroughput: {
+				ReadCapacityUnits: 1000,
+				WriteCapacityUnits: 1000
+			}
+        },
+		{
+			IndexName: 'OriginalLenderNameIndex',
+			KeySchema: [
+				{
+					AttributeName: 'originalLender.name',
+					KeyType: 'HASH'
+				},
+			],
+			Projection: {
+				ProjectionType: 'KEYS_ONLY',
+			},
+			ProvisionedThroughput: {
+				ReadCapacityUnits: 1000,
+				WriteCapacityUnits: 1000
+			}
+        }
+    ]
+};
+
+dynamodb.createTable(params, function(err, data) {
+    if (err) print(err);
+    else print(data);
+});

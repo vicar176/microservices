@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       ">
+
+	<util:map id="queriesMap" key-type="java.lang.String"
+		value-type="java.lang.String">
+
+		<entry key="BATCHPROFILE_SAVE">
+			<value>
+				INSERT INTO Media.BatchProfile (ActionID, Name, Description,
+				Version, BatchType, CreationMethod, CSVFileName, Status,
+				FrequencyId, ScheduledDate, ScheduledTime, CreatedBy, CreatedOnDate,
+				ChangedBy, ChangedOnDate, WorkstationName, ApplicationId)
+				VALUES (?,
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			</value>
+		</entry>
+		<entry key="BATCHPROFILE_UPDATE">
+			<value>
+				Update Media.BatchProfile Set ActionID=?, Name=?, Description=?,
+				Version=?, BatchType=?, CreationMethod=?, CSVFileName=?, Status=?,
+				FrequencyId=?, ScheduledDate=?, ScheduledTime=?, CreatedBy=?,
+				CreatedOnDate=?,
+				ChangedBy=?, ChangedOnDate=?, WorkstationName=?,
+				ApplicationId=? Where BatchProfileId=?
+			</value>
+		</entry>
+		<entry key="BATCHPROFILE_HISTORY_SAVE">
+			<value>
+				INSERT INTO MediaHist.BatchProfileHistory (BatchProfileId,
+				ActionID, Name,
+				Description, Version, BatchType, CreationMethod,
+				CSVFileName,
+				Status,
+				FrequencyId, ScheduledDate, ScheduledTime,
+				CreatedBy, CreatedOnDate, ChangedBy,
+				ChangedOnDate, WorkstationName,
+				ApplicationId)
+				VALUES (?, ?, ?, ?, ?, ?,
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+				?, ?)
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILE_ON_DEMAND_SAVE">
+			<value>
+				INSERT INTO Media.BatchProfile (ActionID, Name, Description,
+				Version, BatchType, CreationMethod, CSVFileName, Status,
+				CreatedBy,
+				CreatedOnDate, ChangedBy, ChangedOnDate, WorkstationName,
+				ApplicationId)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILE_HISTORY_ON_DEMAND_SAVE">
+			<value>
+				INSERT INTO MediaHist.BatchProfileHistory (BatchProfileId,
+				ActionID, Name,
+				Description, Version, BatchType, CreationMethod,
+				CSVFileName,
+				Status,
+				CreatedBy, CreatedOnDate, ChangedBy,
+				ChangedOnDate, WorkstationName,
+				ApplicationId)
+				VALUES (?, ?, ?, ?, ?,
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILE_JOB_STATUS_FILTERING">
+			<value>
+				Select
+				BatchProfileJobId as
+				id,BatchProfile.name,BatchProfileJob.executionStartDateTime,Action.actionDescription,BatchProfile.CSVFileName
+				as fileName,BatchProfile.batchType,JOBSTATUS.description As
+				status,BatchProfileJob.version
+				FROM Media.BatchProfile As
+				BatchProfile Join Media.BatchProfileJob As
+				BatchProfileJob On
+				BatchProfile.BatchProfileId=BatchProfileJob.BatchProfileId Join
+				Media.Action As Action on BatchProfile.ActionId=Action.ActionId
+				Join
+				Media.JOBSTATUS As JOBSTATUS on
+				BatchProfileJob.JobStatusId=JOBSTATUS.JobStatusId
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILE_JOB_STATUS_FILTERING_COUNT">
+			<value>
+				Select Count(*) FROM Media.BatchProfile As BatchProfile Join
+				Media.BatchProfileJob As
+				BatchProfileJob On
+				BatchProfile.BatchProfileId=BatchProfileJob.BatchProfileId Join
+				Media.Action As Action on BatchProfile.ActionId=Action.ActionId
+				Join
+				Media.JOBSTATUS As JOBSTATUS on
+				BatchProfileJob.JobStatusId=JOBSTATUS.JobStatusId
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILEJOB_FIND_BY_ID">
+			<value>
+				SELECT * FROM Media.BatchProfileJob WHERE BatchProfileJobId =
+				?
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILEJOB_SAVE">
+			<value>
+				INSERT INTO Media.BatchProfileJob (BatchProfileId, Version,
+				JobStatusId, ExecutionStartDateTime, ExecutionEndDateTime,
+				TotalDocumentsToBeProcessed, DocumentsProcessed,
+				DocumentsInException, DocumentsFailed, DeleteTempDataAfter,
+				CreatedBy, CreatedOnDate, ChangedBy, ChangedOnDate, WorkstationName,
+				ApplicationId)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+				?)
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILEJOB_UPDATE_COUNTERS">
+			<value>
+				UPDATE Media.BatchProfileJob
+				SET DocumentsProcessed = ?,
+				DocumentsInException = ?, DocumentsFailed =
+				?, ChangedBy = ?
+				WHERE
+				BatchProfileJobId = ?
+			</value>
+		</entry>
+
+		<entry key="TEMPTABLE_CREATE">
+			<value>
+				CREATE TABLE ?
+				(TempTableId BIGINT NOT NULL AUTO_INCREMENT,
+				BatchProfileJobId BIGINT,
+				Created_By VARCHAR(128),
+				Created_On_Date
+				TIMESTAMP,
+				Changed_By VARCHAR(128),
+				Changed_On_Date TIMESTAMP,
+				Workstation_Name VARCHAR(256),
+				Application_Id INTEGER,
+				PRIMARY KEY
+				(TempTableId))
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILEJOB_UPDATE">
+			<value>
+
+				Update Media.BatchProfileJob Set
+				JobStatusId=?,ExecutionEndDateTime=?,DocumentsProcessed=?,DocumentsInException=?,DocumentsFailed=?,DeleteTempDataAfter=?,ChangedOnDate=
+				curdate(),ChangedBy=?,WorkstationName=?,ApplicationId=? where
+				BatchProfileJobId=?
+			</value>
+		</entry>
+		<entry key="INSERT_DOCUMENT_EXCEPTIONS">
+			<value>
+				INSERT INTO Media.DocumentException ( BatchProfileJobId,
+				DocumentId, DocumentStatusId,
+				ErrorDescription,CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+			</value>
+		</entry>
+
+		<entry key="FIND_DOCUMENT_EXCEPTIONS_BY_DOCUMENT_ID">
+			<value>
+				SELECT *
+				FROM Media.DocumentException
+				WHERE DocumentId = ? AND
+				BatchProfileJobId =
+				?
+			</value>
+		</entry>
+
+		<entry key="FIND_DOCUMENT_EXCEPTIONS_BY_JOB_ID">
+			<value>
+				SELECT *
+				FROM Media.DocumentException
+				WHERE BatchProfileJobId =
+				?
+			</value>
+		</entry>
+
+		<entry key="REMOVE_DOCUMENT_EXCEPTIONS_BY_DOCUMENT_ID">
+			<value>
+				DELETE FROM Media.DocumentException WHERE DocumentId = ? AND
+				BatchProfileJobId = ?
+			</value>
+		</entry>
+
+		<entry key="UPDATE_DOCUMENT_EXCEPTIONS_BY_DOCUMENT_ID">
+			<value>
+				UPDATE Media.DocumentException
+				SET DocumentStatusId = ?,
+				ErrorDescription = ?
+				WHERE DocumentId = ? AND BatchProfileJobId = ?
+			</value>
+		</entry>
+
+		<entry key="RETRIEVE_BATCH_PROFILE_JOB">
+			<value>
+				select *
+				from Media.BatchProfileJob;
+			</value>
+		</entry>
+
+		<entry key="FIND_SEARCH_FILTERS_BY_PROFILE_ID">
+			<value>
+				Select BatchProfileId,FilterId,FilterValue,version from
+				Media.SearchFilterValue where BatchProfileId=?
+			</value>
+		</entry>
+
+		<entry key="RETRIVE_BATCH_PROFILE">
+			<value>
+				select BatchProfileId ,ActionID, Name, Description, Version,
+				BatchType,
+				CreationMethod, CSVFileName, Status,
+				FrequencyId,
+				ScheduledDate, ScheduledTime, CreatedOnDate, CreatedBy,
+				ChangedOnDate, ChangedBy, WorkstationName, ApplicationId from
+				Media.BatchProfile where status=1 and BatchType='Scheduled' and
+				((FrequencyId IS NULL
+				and
+				ScheduledDate > curdate() and ScheduledTime
+				> CurTime()) Or FrequencyId
+				IS NOT NULL);
+			</value>
+		</entry>
+
+		<entry key="RETRIVE_BATCH_PROFILE_ACTION">
+			<value>
+				select
+				ActionId,ActionDescription,CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId
+				from Action where ActionId=?;
+			</value>
+		</entry>
+
+		<entry key="SCHEDULED_BATCHES_FILTERING">
+			<value>
+				Select BatchProfile.BatchProfileId as id,
+				BatchProfile.name,BatchProfile.description,Action.actionDescription,BatchProfile.status,ScheduleFrequency.name
+				as
+				frequency,BatchProfileJobLatest.executionStartDateTime,BatchProfile.version,BatchProfile.changedBy
+				FROM Media.BatchProfile As BatchProfile Join (Select
+				max(ExecutionStartDateTime) As
+				ExecutionStartDateTime,JobStatusId,BatchProfileId from
+				Media.BatchProfileJob group by BatchProfileId) As
+				BatchProfileJobLatest On
+				BatchProfile.BatchProfileId=BatchProfileJobLatest.BatchProfileId
+				Join
+				Media.Action As Action on BatchProfile.ActionId=Action.ActionId
+				Join Media.ScheduleFrequency As ScheduleFrequency on
+				BatchProfile.FrequencyId=ScheduleFrequency.FrequencyId
+			</value>
+		</entry>
+
+		<entry key="SCHEDULED_BATCHES_FILTERING_COUNT">
+			<value>
+				Select
+				count(*)
+				FROM Media.BatchProfile As BatchProfile Join
+				(Select
+				max(ExecutionStartDateTime) As
+				ExecutionStartDateTime,JobStatusId,BatchProfileId from
+				Media.BatchProfileJob group by BatchProfileId) As
+				BatchProfileJobLatest On
+				BatchProfile.BatchProfileId=BatchProfileJobLatest.BatchProfileId
+				Join
+				Media.Action As Action on BatchProfile.ActionId=Action.ActionId
+				Join Media.ScheduleFrequency As ScheduleFrequency on
+				BatchProfile.FrequencyId=ScheduleFrequency.FrequencyId
+			</value>
+		</entry>
+
+		<entry key="RETRIVE_SEARCH_FILTER">
+			<value>
+				select
+				FilterId,FilterCode,FilterDescription,FilterTypeId,CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId
+				from SearchFilter;
+			</value>
+		</entry>
+
+		<entry key="BATCHPROFILE_JOB_STATUS_DOCUMENT_DETAIL_FILTERING">
+			<value>
+				SELECT
+				DocumentException.errorDescription,
+				DocumentException.documentId,
+				Document_Images.s3_bucket,
+				Document_Images.Aws_S3_Url,
+				Document_Images.S3_Folder,
+				Document_Status.document_status_code,
+				IFNULL(Workflow_State.Ingestion_State_Code,'-')
+				'Ingestion_State_Code'
+				FROM
+				Media.DocumentException DocumentException
+				LEFT OUTER JOIN Media.Workflow_State Workflow_State
+				ON
+				DocumentException.documentId=Workflow_State.Document_Id,
+				Media.Document_Status Document_Status,
+				Media.Document_Images
+				Document_Images
+				where
+				DocumentException.batchProfileJobId=?
+				and
+				DocumentException.DocumentStatusId=Document_Status.document_Status_Id
+				and Document_Status.document_Status_Code = ?
+				and
+				DocumentException.documentId=Document_Images.document_Id
+
+			</value>
+		</entry>
+
+
+		<entry key="BATCHPROFILE_JOB_STATUS_DOCUMENT_DETAIL_FILTERING_COUNT">
+			<value>
+				SELECT
+				COUNT(*)
+				FROM
+				Media.DocumentException DocumentException
+				LEFT OUTER JOIN Media.Workflow_State
+				Workflow_State
+				ON
+				DocumentException.documentId=Workflow_State.Document_Id,
+				Media.Document_Status Document_Status,
+				Media.Document_Images
+				Document_Images
+				where
+				DocumentException.batchProfileJobId=?
+				and
+				DocumentException.DocumentStatusId=Document_Status.document_Status_Id
+				and Document_Status.document_Status_Code = ?
+				and
+				DocumentException.documentId=Document_Images.document_Id
+
+			</value>
+		</entry>
+
+
+		<entry key="BATCHPROFILE_JOB_STATUS_DOCUMENT_DETAIL_NOTFOUND_FILTERING">
+			<value>
+				SELECT
+				DocumentException.documentId
+				FROM
+				Media.DocumentException
+				DocumentException,Media.Document_Status
+				Document_Status
+				where
+				DocumentException.batchProfileJobId=? and
+				DocumentException.DocumentStatusId=Document_Status.document_Status_Id
+				and Document_Status.document_Status_Code = ?
+
+			</value>
+		</entry>
+
+		<entry
+			key="BATCHPROFILE_JOB_STATUS_DOCUMENT_DETAIL_NOTFOUND_FILTERING_COUNT">
+			<value>
+				SELECT
+				COUNT(*)
+				FROM Media.DocumentException
+				DocumentException,Media.Document_Status
+				Document_Status
+				where
+				DocumentException.batchProfileJobId=? and
+				DocumentException.DocumentStatusId=Document_Status.document_Status_Id
+				and Document_Status.document_Status_Code = ?
+			</value>
+		</entry>
+
+		<entry key="BATCH_STATUS_DETAILS_FILTERING">
+			<value>
+				SELECT
+				ExecutionStartDateTime,
+				ExecutionEndDateTime,
+				timediff(ExecutionEndDateTime, ExecutionStartDateTime) as TotalTime,
+				timediff(ExecutionEndDateTime, ExecutionStartDateTime) * 60 * 100 as
+				TotalTimeInMiliSecond,
+				TotalDocumentsToBeProcessed,
+				(SELECT count(*)
+				FROM Media.DocumentException de,Media.BatchProfileJob bpj,
+				Media.Document_Status ds where
+				bpj.BatchProfileJobId =
+				de.BatchProfileJobId and
+				de.DocumentStatusId=ds.Document_Status_Id
+				and bpj.BatchProfileJobId=? and DocumentStatusId=8) as NotFound ,
+				(SELECT count(*) FROM Media.DocumentException
+				de,Media.BatchProfileJob bpj,
+				Media.Document_Status ds where
+				bpj.BatchProfileJobId = de.BatchProfileJobId and
+				de.DocumentStatusId=ds.Document_Status_Id
+				and bpj.BatchProfileJobId=?
+				and DocumentStatusId=5) as InvalidFolder ,
+				(SELECT count(*) FROM
+				Media.DocumentException
+				de,Media.BatchProfileJob bpj,
+				Media.Document_Status ds where
+				bpj.BatchProfileJobId =
+				de.BatchProfileJobId and
+				de.DocumentStatusId=ds.Document_Status_Id
+				and bpj.BatchProfileJobId=? and DocumentStatusId=7) as Exception ,
+				(SELECT count(*) FROM Media.DocumentException
+				de,Media.BatchProfileJob bpj,
+				Media.Document_Status ds where
+				bpj.BatchProfileJobId = de.BatchProfileJobId and
+				de.DocumentStatusId=ds.Document_Status_Id
+				and bpj.BatchProfileJobId=?
+				and DocumentStatusId=2) as Processed,
+				(SELECT count(*) FROM
+				Media.DocumentException
+				de,Media.BatchProfileJob bpj,
+				Media.Document_Status ds where
+				bpj.BatchProfileJobId =
+				de.BatchProfileJobId and
+				de.DocumentStatusId=ds.Document_Status_Id
+				and bpj.BatchProfileJobId=? and DocumentStatusId=4) as Processing,
+				(SELECT count(*) FROM Media.DocumentException
+				de,Media.BatchProfileJob bpj,
+				Media.Document_Status ds where
+				bpj.BatchProfileJobId = de.BatchProfileJobId and
+				de.DocumentStatusId=ds.Document_Status_Id
+				and bpj.BatchProfileJobId=?
+				and DocumentStatusId=3) as Failed
+				FROM Media.BatchProfileJob bpj
+				where bpj.BatchProfileJobId=?
+
+
+			</value>
+		</entry>
+		<entry key="SAVE_BATCH_SEARCH_FILTER_VALUES">
+			<value>
+				Insert INTO Media.SearchFilterValue
+				(BatchProfileId,FilterId,FilterValue,Version,CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId)
+				values(?,?,?,?,?,?,?,?,?,?);
+			</value>
+		</entry>
+
+		<entry key="SAVE_BATCH_SEARCH_FILTER_HISTORY_VALUES">
+			<value>
+				Insert INTO MediaHist.SearchFilterValuesHistory
+				(BatchProfileId,FilterId,FilterValue,Version,CreatedOnDate,CreatedBy,ChangedOnDate,ChangedBy,WorkstationName,ApplicationId)
+				values(?,?,?,?,?,?,?,?,?,?);
+			</value>
+		</entry>
+		<entry key="FETCH_BATCH_VERSION">
+			<value>
+				Select Version from Media.BatchProfile where BatchProfileId=?
+			</value>
+		</entry>
+		<entry key="UPDATE_BATCH_STATUS">
+			<value>
+				update Media.BatchProfile set status=? where BatchProfileId=?
+			</value>
+		</entry>
+		<entry key="DELETE_BATCH_SEARCH_FILTER_VALUES">
+			<value>
+				Delete From Media.SearchFilterValue where BatchProfileId=?
+				
+			</value>
+		</entry>
+	</util:map>
+
+</beans>

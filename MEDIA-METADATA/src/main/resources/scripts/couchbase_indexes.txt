@@ -1,0 +1,5 @@
+----Primary index IF NOT EXISTS
+CREATE PRIMARY INDEX `#primary` ON `media-dia` USING GSI
+
+---Secondary Index for MediaMetadata
+ CREATE INDEX `def_acctNum_docTyp_docDate` ON `media-dia`(`accountNumber`,`originalDocumentType`,`documentDate`) WHERE (`type` = `MediaMetadataEntity`) USING GSI

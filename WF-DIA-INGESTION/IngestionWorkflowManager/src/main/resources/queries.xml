@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       ">
+
+	<util:map id="queriesMap" key-type="java.lang.String"
+		value-type="java.lang.String">
+
+		<entry key="CONFIGURATIONPARAMETERS_FIND_ALL">
+			<value>
+				SELECT Parameter_Key, Parameter_Value
+				FROM
+				Media.Configuration_Parameters
+				WHERE Parameter_Key Like "iwfm.%"
+			</value>
+		</entry>
+
+		<entry key="CONFIGURATIONPARAMETERS_UPDATE_ONE">
+			<value>
+				UPDATE Media.Configuration_Parameters
+				SET Parameter_Value = ?, Changed_By = ?, Changed_On_Date = CURRENT_TIMESTAMP
+				WHERE Parameter_Key = ?
+			</value>
+		</entry>
+		
+		<entry key="CONFIGURATIONPARAMETERS_FIND_ONE">
+			<value>
+				SELECT Parameter_Key, Parameter_Value
+				FROM Media.Configuration_Parameters
+				WHERE Parameter_Key = ? 
+			</value>
+		</entry>
+		
+	</util:map>
+
+</beans>

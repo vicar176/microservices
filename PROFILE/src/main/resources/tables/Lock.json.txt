@@ -1,0 +1,23 @@
+var params = {
+    TableName: 'MCM-DDB-MEDIA-STORAGE-DIA-PROFILE-LOCK-DEV',
+    KeySchema: [ 
+        {
+            AttributeName: 'id',
+            KeyType: 'HASH',
+        },
+    ],
+    AttributeDefinitions: [ 
+        {
+            AttributeName: 'id',
+            AttributeType: 'S', 
+        },
+    ],
+    ProvisionedThroughput: {
+        ReadCapacityUnits: 1000, 
+        WriteCapacityUnits: 1000, 
+    }
+};
+dynamodb.createTable(params, function(err, data) {
+    if (err) print(err);
+    else print(data);
+});

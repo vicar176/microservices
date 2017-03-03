@@ -1,0 +1,5 @@
+----Primary index IF NOT EXISTS
+CREATE PRIMARY INDEX `#primary` ON `media-dia` USING GSI
+
+---Secondary Index for IngestionStep
+CREATE INDEX `def_docId_inStCode` ON `media-dia`(`documentId`,`ingestionStateCode`) WHERE (`type` = `IngestionStepEntity`) USING GSI

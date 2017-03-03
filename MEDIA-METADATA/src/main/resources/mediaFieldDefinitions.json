@@ -1,0 +1,128 @@
+[  
+  {
+    "mediaType": {
+      "id": 1,
+      "code": "STMT"
+    },
+    "fieldDefinitions":[  
+      {  
+        "fieldDescription":"Consumer Name",
+        "fieldName":"consumerName",
+        "fieldRequired":true,
+        "fieldType":"alphanumeric"
+      },
+      {  
+        "fieldDescription":"Original Account Number",
+        "fieldName":"originalAccountNumber",
+        "fieldRequired":true,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"OALD Balance",
+        "fieldName":"oaldBalance",
+        "fieldRequired":true,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"Payments",
+        "fieldName":"payments",
+        "fieldRequired":true,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"STMT Date",
+        "fieldName":"stmtDate",
+        "fieldRequired":true,
+        "fieldType":"date"
+      },
+      {  
+        "fieldDescription":"Fees",
+        "fieldName":"fees",
+        "fieldRequired":false,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"Interest",
+        "fieldName":"interest",
+        "fieldRequired":false,
+        "fieldType":"number"
+      }
+    ]
+  },
+  {
+    "mediaType": {
+      "id": 2,
+      "code": "GBLTR"
+    },
+    "fieldDefinitions":[  
+      {  
+        "fieldDescription":"Consumer Name",
+        "fieldName":"consumerName",
+        "fieldRequired":true,
+        "fieldType":"alphanumeric"
+      },
+      {  
+        "fieldDescription":"Original Account Number",
+        "fieldName":"originalAccountNumber",
+        "fieldRequired":true,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"OALD Balance",
+        "fieldName":"oaldBalance",
+        "fieldRequired":true,
+        "fieldType":"number"
+      }
+    ]
+  },
+  {
+    "mediaType": {
+      "id": 3,
+      "code": "THST"
+    },
+    "fieldDefinitions":[  
+      {  
+        "fieldDescription":"Consumer Name",
+        "fieldName":"consumerName",
+        "fieldRequired":true,
+        "fieldType":"alphanumeric"
+      },
+      {  
+        "fieldDescription":"Original Account Number",
+        "fieldName":"originalAccountNumber",
+        "fieldRequired":true,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"OALD Balance",
+        "fieldName":"oaldBalance",
+        "fieldRequired":true,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"Payments",
+        "fieldName":"payments",
+        "fieldRequired":true,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"STMT Date",
+        "fieldName":"stmtDate",
+        "fieldRequired":true,
+        "fieldType":"date"
+      },
+      {  
+        "fieldDescription":"Fees",
+        "fieldName":"fees",
+        "fieldRequired":false,
+        "fieldType":"number"
+      },
+      {  
+        "fieldDescription":"Interest",
+        "fieldName":"interest",
+        "fieldRequired":false,
+        "fieldType":"number"
+      }
+    ]
+  }
+]

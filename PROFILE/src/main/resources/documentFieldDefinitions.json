@@ -1,0 +1,384 @@
+[  
+  {
+    "documentType": {
+      "id": 1,
+      "code": "stmt"
+    },
+    "accountVerification": false,
+  	"active": false,
+  	"updatedBy":"varias",
+    "fieldDefinitions":[  
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+			"createDate": "2016-08-03T16:25:48Z",
+		    "updateDate": "2016-08-03T16:25:48Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "9f22739a-6186-4e54-9e98-c21524f43944",
+		    "fieldDescription": "Consumer Name",
+		    "fieldName": "consumerName",
+		    "fieldType": "alphanumeric",
+		    "databaseMapping": [
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSFNM"
+		      },
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSMNM"
+		      },
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSLNM"
+		      }
+		    ],
+		    "operators": [
+		      {
+		        "symbol": "append",
+		        "name": "APPEND"
+		      }
+		    ]
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+			"createDate": "2016-08-03T16:26:56Z",
+		    "updateDate": "2016-08-03T16:26:56Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "7f65657d-deb9-453b-865e-b6ba3f1f3489",
+		    "fieldDescription": "Original Account Number",
+		    "fieldName": "originalAccountNumber",
+		    "fieldType": "number",
+		    "databaseMapping": [
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSOACT"
+		      }
+		    ],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:27:45Z",
+		    "updateDate": "2016-08-03T16:27:45Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "7495797d-697a-4b09-9e54-db2fa4d96cf1",
+		    "fieldDescription": "OALD Balance",
+		    "fieldName": "oaldBalance",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:28:34Z",
+		    "updateDate": "2016-08-03T16:28:34Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "d72a3e0d-e98a-4587-a8db-b601ad3ed5b9",
+		    "fieldDescription": "Payments",
+		    "fieldName": "payments",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": false,
+        "required": false,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:29:08Z",
+		    "updateDate": "2016-08-03T16:29:08Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "ad0acbcb-2363-4884-a1f1-750c7562548a",
+		    "fieldDescription": "STMT Date",
+		    "fieldName": "stmtDate",
+		    "fieldType": "date",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": false,
+        "required": false,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:29:49Z",
+		    "updateDate": "2016-08-03T16:29:49Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "79b211aa-0d8a-4ef4-85e1-c45f62b1fa8a",
+		    "fieldDescription": "Fees",
+		    "fieldName": "fees",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": false,
+        "required": false,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:31:14Z",
+		    "updateDate": "2016-08-03T16:31:14Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "239584e9-f5fe-48f7-b55f-14606bd77222",
+		    "fieldDescription": "Interest",
+		    "fieldName": "interest",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      }
+    ]
+  },
+  {
+    "documentType": {
+      "id": 2,
+      "code": "gbltr"
+    },
+    "updatedBt":"varias",
+    "fieldDefinitions":[  
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+			"createDate": "2016-08-03T16:25:48Z",
+		    "updateDate": "2016-08-03T16:25:48Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "9f22739a-6186-4e54-9e98-c21524f43944",
+		    "fieldDescription": "Consumer Name",
+		    "fieldName": "consumerName",
+		    "fieldType": "alphanumeric",
+		    "databaseMapping": [
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSFNM"
+		      },
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSMNM"
+		      },
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSLNM"
+		      }
+		    ],
+		    "operators": [
+		      {
+		        "symbol": "append",
+		        "name": "APPEND"
+		      }
+		    ]
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+			"createDate": "2016-08-03T16:26:56Z",
+		    "updateDate": "2016-08-03T16:26:56Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "7f65657d-deb9-453b-865e-b6ba3f1f3489",
+		    "fieldDescription": "Original Account Number",
+		    "fieldName": "originalAccountNumber",
+		    "fieldType": "number",
+		    "databaseMapping": [
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSOACT"
+		      }
+		    ],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:27:45Z",
+		    "updateDate": "2016-08-03T16:27:45Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "7495797d-697a-4b09-9e54-db2fa4d96cf1",
+		    "fieldDescription": "OALD Balance",
+		    "fieldName": "oaldBalance",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      }
+    ]
+  },
+  {
+    "documentType": {
+      "id": 3,
+      "code": "thst"
+    },
+    "updatedBt":"varias",
+    "fieldDefinitions":[  
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+			"createDate": "2016-08-03T16:25:48Z",
+		    "updateDate": "2016-08-03T16:25:48Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "9f22739a-6186-4e54-9e98-c21524f43944",
+		    "fieldDescription": "Consumer Name",
+		    "fieldName": "consumerName",
+		    "fieldType": "alphanumeric",
+		    "databaseMapping": [
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSFNM"
+		      },
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSMNM"
+		      },
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSLNM"
+		      }
+		    ],
+		    "operators": [
+		      {
+		        "symbol": "append",
+		        "name": "APPEND"
+		      }
+		    ]
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+			"createDate": "2016-08-03T16:26:56Z",
+		    "updateDate": "2016-08-03T16:26:56Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "7f65657d-deb9-453b-865e-b6ba3f1f3489",
+		    "fieldDescription": "Original Account Number",
+		    "fieldName": "originalAccountNumber",
+		    "fieldType": "number",
+		    "databaseMapping": [
+		      {
+		        "schema": "CCDATA",
+		        "table": "RCMAST",
+		        "field": "MSOACT"
+		      }
+		    ],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:27:45Z",
+		    "updateDate": "2016-08-03T16:27:45Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "7495797d-697a-4b09-9e54-db2fa4d96cf1",
+		    "fieldDescription": "OALD Balance",
+		    "fieldName": "oaldBalance",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": true,
+        "required": true,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:28:34Z",
+		    "updateDate": "2016-08-03T16:28:34Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "d72a3e0d-e98a-4587-a8db-b601ad3ed5b9",
+		    "fieldDescription": "Payments",
+		    "fieldName": "payments",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": false,
+        "required": false,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:29:08Z",
+		    "updateDate": "2016-08-03T16:29:08Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "ad0acbcb-2363-4884-a1f1-750c7562548a",
+		    "fieldDescription": "STMT Date",
+		    "fieldName": "stmtDate",
+		    "fieldType": "date",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": false,
+        "required": false,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:29:49Z",
+		    "updateDate": "2016-08-03T16:29:49Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "79b211aa-0d8a-4ef4-85e1-c45f62b1fa8a",
+		    "fieldDescription": "Fees",
+		    "fieldName": "fees",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      },
+      {  
+      	"verification": false,
+        "required": false,
+		"fieldDefinition": {
+		    "createDate": "2016-08-03T16:31:14Z",
+		    "updateDate": "2016-08-03T16:31:14Z",
+		    "updatedBy": "varias",
+		    "version": 1,
+		    "id": "239584e9-f5fe-48f7-b55f-14606bd77222",
+		    "fieldDescription": "Interest",
+		    "fieldName": "interest",
+		    "fieldType": "number",
+		    "databaseMapping": [],
+		    "operators": []
+		}
+      }
+    ]
+  }
+]

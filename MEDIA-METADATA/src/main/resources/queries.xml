@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       ">
+
+	<util:map id="queriesMap" key-type="java.lang.String"
+		value-type="java.lang.String">
+
+		<!-- portfolios/product-groups -->
+		<entry key="GET_ALL_METADATA">
+			<value>
+				SELECT meta().id, createDate, updateDate, updatedBy, version, documentId, batchProfileJobId, accountNumber,
+				portfolioNumber, seller, originalLenderName, documentStatus, originalDocumentType,
+				documentDate, manualAccountVerification, accountVerification, receive, pdfTagging, extraction,
+				autoValidation, manualValidation, document, dataElements
+				FROM `media-dia` 
+				WHERE type = "MediaMetadataEntity"
+			</value>
+		</entry>
+
+		<entry key="GET_PORTFOLIO_SUMMARY">
+			<value>
+				select portfolioNumber, batchProfileJobId, seller.name as originalSeller, count(*)
+				as documentsFailed, count(extraction.templateMappingProfile) as templateFoundCount,
+				count(dataElements)  as noTextLayer
+				FROM `media-dia`
+				WHERE type ="MediaMetadataEntity"
+			</value>
+		</entry>
+
+		<entry key="GET_PORTFOLIO_IDS">
+			<value>
+				select distinct portfolioNumber
+				from `media-dia`
+				WHERE type =
+				"MediaMetadataEntity"
+			</value>
+		</entry>
+
+		<entry key="GET_METADATA_WITH_TEMPLATE_NOT_EXTRACTED">
+			<value>
+				select extraction.templateMappingProfile.id as templateId, extraction.templateMappingProfile.name as templateName,
+				extraction.templateMappingProfile.updatedBy as updatedBy,
+				extraction.templateMappingProfile.updateDate as updateDate,
+				extraction.templateMappingProfile.version as version, documentStatus, batchProfileJobId,
+				MIN(updateDate) as lastRun, count(*) as documentsFailed
+				from
+				`media-dia`
+				WHERE type = "MediaMetadataEntity" AND
+				extraction.templateMappingProfile
+				IS NOT NULL
+			</value>
+		</entry>
+
+		<entry key="GET_METADATA_WITHOUT_TEMPLATE_NOT_EXTRACTED">
+			<value>
+				select originalDocumentType,
+				originalLenderName as originalLender,
+				seller, documentStatus, batchProfileJobId,
+				count(*) as documentsFailed
+				from `media-dia`
+				WHERE type = "MediaMetadataEntity"
+				AND (extraction.templateMappingProfile IS NULL or 
+					TYPE(extraction.templateMappingProfile) = "missing" or
+					TYPE(extraction) = "missing") 
+			</value>
+		</entry>
+
+		<entry key="GET_FAILED_DOCUMENTS_BY_TEMPLATE_NAME">
+			<value>
+				select document.documentName.documentId, document.documentNameString, document.bucketName, batchProfileJobId
+				from `media-dia`
+				WHERE
+				type =
+				"MediaMetadataEntity"
+			</value>
+		</entry>
+
+		<entry key="GET_COUNT">
+			<value>
+				select COUNT(*) as total
+				from `media-dia`
+				WHERE type =
+				"MediaMetadataEntity"
+			</value>
+		</entry>
+
+		<entry key="GET_COUNT_TEMPLATES_NOT_FOUND">
+			<value>
+				select COUNT( DISTINCT originalDocumentType.code || " " ||
+				originalLenderName) as total
+				from `media-dia`
+				WHERE type =
+				"MediaMetadataEntity"
+				AND (extraction.templateMappingProfile IS NULL or 
+					TYPE(extraction.templateMappingProfile) = "missing" or
+					TYPE(extraction) = "missing") 
+			</value>
+		</entry>
+
+		<entry key="GET_COUNT_TEMPLATES_FOUND">
+			<value>
+				select COUNT( DISTINCT extraction.templateMappingProfile.name)
+				as total
+				from `media-dia`
+				WHERE type = "MediaMetadataEntity"
+				AND
+				extraction.templateMappingProfile IS NOT NULL
+			</value>
+		</entry>
+
+		<entry key="GET_COUNT_PORTFOLIOS_FOUND">
+			<value>
+				select COUNT(distinct portfolioNumber) as total
+				from `media-dia`
+				WHERE type =
+				"MediaMetadataEntity"
+			</value>
+		</entry>
+		
+		<entry key="FIND_DOC_BY_ID">
+			<value>
+				select meta().id, *
+				from `media-dia` 
+				where type = "MediaMetadataEntity" and documentId = ?
+			</value>
+		</entry>
+	</util:map>
+
+</beans>

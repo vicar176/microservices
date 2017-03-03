@@ -1,0 +1,88 @@
+var params = {
+    TableName: 'MCM-DDB-MEDIA-STORAGE-DIA-PROFILE-OLADPROFILE-DEV',
+    KeySchema: [ 
+        {
+            AttributeName: 'id',
+            KeyType: 'HASH',
+        }
+    ],
+    AttributeDefinitions: [
+        {
+            AttributeName: 'id',
+            AttributeType: 'S',
+        },
+        {
+            AttributeName: 'productGroup.code',
+            AttributeType: 'S',
+        },
+        {
+            AttributeName: 'portfolio.id',
+            AttributeType: 'N',
+        },
+        {
+            AttributeName: 'originalLender.name',
+            AttributeType: 'S', 
+        },
+        
+        // ... more attributes ...
+    ],
+    ProvisionedThroughput: { 
+        ReadCapacityUnits: 1000, 
+        WriteCapacityUnits: 1000, 
+    },
+    GlobalSecondaryIndexes: [ 
+        { 
+            IndexName: 'ProductGroupCodeIndex', 
+            KeySchema: [
+                { 
+                    AttributeName: 'productGroup.code',
+                    KeyType: 'HASH',
+                },
+            ],
+            Projection: {
+                ProjectionType: 'ALL',
+            },
+            ProvisionedThroughput: { 
+                ReadCapacityUnits: 1000,
+                WriteCapacityUnits: 1000,
+            },
+        },
+                { 
+            IndexName: 'PortfolioIdIndex', 
+            KeySchema: [
+                { 
+                    AttributeName: 'portfolio.id',
+                    KeyType: 'HASH',
+                },
+            ],
+            Projection: { 
+                ProjectionType: 'ALL', 
+            },
+            ProvisionedThroughput: { 
+                ReadCapacityUnits: 1000,
+                WriteCapacityUnits: 1000,
+            },
+        },
+                { 
+            IndexName: 'OriginalLenderNameIndex', 
+            KeySchema: [
+                {
+                    AttributeName: 'originalLender.name',
+                    KeyType: 'HASH',
+                },
+            ],
+            Projection: { 
+                ProjectionType: 'ALL', 
+            },
+            ProvisionedThroughput: { 
+                ReadCapacityUnits: 1000,
+                WriteCapacityUnits: 1000,
+            },
+        },
+    ],
+};
+
+dynamodb.createTable(params, function(err, data) {
+    if (err) print(err); 
+    else print(data); 
+});

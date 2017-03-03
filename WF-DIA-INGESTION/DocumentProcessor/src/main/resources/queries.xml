@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       ">
+
+	<util:map id="queriesMap" key-type="java.lang.String"
+		value-type="java.lang.String">
+
+
+		<entry key="DOCUMENTSIMAGES_STATUS">
+			<value>
+				select Ingestion_Status,count(*) as Total from
+				Media.Document_Images
+				Group by Ingestion_Status;
+			</value>
+		</entry>
+		
+		<entry key="DOCUMENTSTATUS_FIND_ALL">
+			<value>
+				SELECT * FROM Media.Document_Status
+			</value>
+		</entry>
+
+		<entry key="CONFIGURATIONPARAMETERS_FIND_ALL">
+			<value>
+				SELECT Parameter_Key, Parameter_Value
+				FROM
+				Media.Configuration_Parameters
+				WHERE Parameter_Key Like "documentprocessor.%"
+			</value>
+		</entry>
+
+		<entry key="CONFIGURATIONPARAMETERS_UPDATE_ONE">
+			<value>
+				UPDATE Media.Configuration_Parameters
+				SET Parameter_Value = ?, Changed_By = ?, 
+				Changed_On_Date = CURRENT_TIMESTAMP
+				WHERE Parameter_Key = ?
+			</value>
+		</entry>
+		<entry key="CONFIGURATIONPARAMETERS_FIND_ONE">
+			<value>
+				SELECT Parameter_Key, Parameter_Value
+				FROM Media.Configuration_Parameters
+				WHERE Parameter_Key = ? 
+			</value>
+		</entry>
+		
+		<entry key="INGESTIONTRACKER_UPDATE">
+			<value>
+				UPDATE Media.Ingestion_Tracker
+				SET Document_Status_Code = ?, Changed_By = ?, Changed_On_Date = CURRENT_TIMESTAMP
+				WHERE Document_Id = ?
+			</value>
+		</entry>
+		
+		<entry key="INGESTIONTRACKER_UPDATE_WITH_BATCH_ID">
+			<value>
+				UPDATE Media.Ingestion_Tracker
+				SET Document_Status_Code = ?, Changed_By = ?, Changed_On_Date = CURRENT_TIMESTAMP
+				WHERE Document_Id = ? and Batch_Execution_Id = ?
+			</value>
+		</entry>
+		
+		<entry key="INGESTIONTRACKER_FIND_BATCH_ID">
+			<value>
+				SELECT Batch_Execution_Id FROM Media.Ingestion_Tracker 
+				WHERE Document_Id = ? ORDER BY Batch_Execution_Id DESC LIMIT 1
+			</value>
+		</entry>
+		
+		<entry key="INGESTIONTRACKER_SUMMARY">
+			<value>
+				SELECT Batch_Execution_Id as 'Batch Execution Id', Document_Status_Code as 'Document Status', 
+					COUNT(Document_Status_Code) as Total FROM Ingestion_Tracker  
+				GROUP BY Batch_Execution_Id, Document_Status_Code 
+				ORDER BY Batch_Execution_Id DESC, Document_Status_Code DESC
+				LIMIT 100
+			</value>
+		</entry>
+		
+		<entry key="DOCUMENTIMAGES_UPDATE">
+			<value>
+				UPDATE Media.Document_Images
+				SET Ingestion_Status = ?
+				WHERE Document_Id = ?
+			</value>
+		</entry>
+		
+		<!-- Named Parameters -->
+		<entry key="DOCUMENTIMAGES_GET">
+			<value>
+				SELECT Document_Id, Aws_S3_Url, S3_Bucket, S3_Folder, Document_Type
+				FROM Media.Document_Images
+				WHERE Document_Id IN (:documentIds)
+			</value>
+		</entry>
+		
+		<entry key="BATCHEXECUTION_UPDATE">
+			<value>
+				UPDATE Media.Batch_Execution
+				SET Execution_Status_Code = ?, Changed_By = ?, Changed_On_Date = CURRENT_TIMESTAMP
+				WHERE Batch_Execution_Id = ?
+			</value>
+		</entry>
+		
+		<entry key="BATCHEXECUTION_FIND_ALL">
+			<value>
+				SELECT * FROM Media.Batch_Execution 
+				ORDER BY Batch_Execution_Id DESC
+			</value>
+		</entry>
+		
+		<entry key="BATCHEXECUTION_FIND_RUNNING">
+			<value>
+				SELECT Batch_Execution_Id
+				FROM Media.Ingestion_Tracker    
+				WHERE Batch_Execution_Id IN 
+				(SELECT Batch_Execution_Id FROM Media.Batch_Execution WHERE Execution_Status_Code = "Running")
+				AND Document_Status_Code != "New"
+				GROUP BY Batch_Execution_Id ORDER BY Batch_Execution_Id DESC
+			</value>
+		</entry>
+		
+		<entry key="BATCHEXECUTION_SUMMARY">
+			<value>
+				SELECT Batch_Execution_Id as 'Batch Execution Id', Execution_Status_Code as 'Status', Created_On_Date as 'Created On Date', 
+					Created_By as 'Created By', Changed_On_Date as 'Changed On Date', Changed_By as 'Changed By'
+				FROM Media.Batch_Execution 
+				ORDER BY Batch_Execution_Id DESC 
+				LIMIT 100
+			</value>
+		</entry>
+		
+		<entry key="INGESTION_STATUS">
+			<value>
+				SELECT it.Batch_Execution_Id as Batch, ins.Ingestion_State_Code as 'Ingestion State', ins.Status_Code as Status, 
+					Count(ins.Status_Code) as Total, 
+    				TIMEDIFF(greatest(MAX(ins.Changed_On_Date), MIN(ins.Created_On_Date)) , MIN(ins.Created_On_Date)) as Duration,
+    				MIN(ins.Created_On_Date) as 'Start Time', MAX(ins.Changed_On_Date) as 'End Time'
+				FROM Media.Ingestion_Tracker it
+				inner join Media.Workflow_State ws on (ws.document_id = it.document_id)
+				inner join Media.Ingestion_Step ins on (ins.workflow_state_id = ws.workflow_state_id)
+				group by it.Batch_Execution_Id, ins.Ingestion_State_Code, ins.Status_Code
+				order by it.Batch_Execution_Id Desc, ins.Ingestion_Step_Id, ins.Ingestion_State_Code, ins.Status_Code
+				LIMIT 100 
+			</value>
+		</entry>
+
+	</util:map>
+
+</beans>

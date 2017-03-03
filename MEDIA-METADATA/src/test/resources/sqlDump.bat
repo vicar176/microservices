@@ -1,0 +1,2 @@
+aws --endpoint-url %1 dynamodb create-table --attribute-definitions AttributeName=entryDate,AttributeType=S AttributeName=id,AttributeType=S --table-name History --key-schema AttributeName=id,KeyType=HASH AttributeName=entryDate,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=10
+aws --endpoint-url %1 dynamodb list-tables
